@@ -1,0 +1,8 @@
+MySQL Windows 5.5
+	-Username: root
+	-Password: root
+IIS 7.5
+PHP Manager for IIS
+PHP MyAdmin 4.4.1.1
+PHP Version 5.3.28
+

@@ -1,0 +1,32 @@
+table, tr, td{
+padding: 0px;
+}
+
+.slip{
+page-break-after:always;}
+
+.sliphead{
+height: 200px;
+}
+
+.ad{
+height: 50px;
+}
+
+
+.prntslip{
+width: 700px;
+}
+
+
+.feecl{
+border-right: solid;
+}
+
+.total{
+font-size: 25px;
+}
+
+.sprt{
+border-right: solid;
+}

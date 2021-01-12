@@ -1,0 +1,74 @@
+table, tr, td{
+padding: 0px;
+}
+
+.slip{
+page-break-after:always;}
+
+.sliphead{
+height: 200px;
+}
+
+.ad{
+height: 50px;
+background-image:url('ad.png');
+background-repeat: no-repeat;
+}
+
+.prntslip{
+width: 700px;
+}
+
+.feecl{
+border-right: solid;
+}
+
+.total{
+font-size: 25px;
+}
+
+.sprt{
+border-right: solid;
+}
+
+h2{
+color: green;
+}
+
+h3{
+color: red;
+}
+
+ul{
+color: blue;
+}
+
+body{
+background-image: url("bg.png");
+}
+
+input, select{
+width: 200px;
+}
+
+.warning{
+background-color: yellow;
+color: red;
+}
+
+.unpaid{
+background-color: red;
+}
+
+.wraper{
+background-color: #F0F8FF;
+Width: 70%;
+position: absolute;
+left: 200px;
+top: 100px;
+box-shadow: 0px 0px 20px #ADFF2F;
+border: 1px solid red;
+box-sizing: border-box;
+float: left;
+border-color: #008000;
+}
