@@ -32,9 +32,9 @@ session_start();
 
 </form>
 <?php
-if($_POST["submit"]){
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+if(isset($_POST["submit"])){
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 /*
 $_SESSION["email"] = 
 $_SESSION["password"] = */
@@ -42,8 +42,8 @@ $_SESSION["password"] = */
 $fname = $_POST["fname"];
 $faimlynum = $_POST["faimlynum"];
 
-$insert = mysql_query("INSERT INTO iphs.faimly (fname, faimlynum)VALUES('$fname','$faimlynum')",$con);
-if($insert){echo "Data Entered";}else{echo "Data not Entered<br>".mysql_error();}
+$insert = mysqli_query($con,"INSERT INTO iphs.faimly (fname, faimlynum)VALUES('$fname','$faimlynum')");
+if($insert){echo "Data Entered";}else{echo "Data not Entered<br>".mysqli_error();}
 }
 ?>
 </div>

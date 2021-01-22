@@ -29,22 +29,34 @@ session_start();
 </form>
 <?php
 
-if($_POST["submit"]=='View' || $_GET["slip"]){
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+if (isset($_POST["submit"])) {
+	$submit = $_POST["submit"];
+}
 
-if($_POST["submit"]=='View'){ $id = $_POST["id"];} else  {$id = $_GET["slip"];}
+if($submit='View' || isset($_GET["slip"])){
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 
-$slipdata = mysql_query("SELECT * FROM iphs.slips WHERE id = $id",$con);
+if($submit='View'){ 
+	if (isset($_POST["id"])) {
+		$id = $_POST["id"];
+	}
+	else  {
+		if (isset($_GET["slip"])) {
+		$id = $_GET["slip"];
+	}
+	}}
 
-while($row = mysql_fetch_array($slipdata)){
+$slipdata = mysqli_query($con,"SELECT * FROM iphs.slips WHERE id = $id");
+
+while($row = mysqli_fetch_array($slipdata)){
 
 $faimlynum = $row["faimlynum"];
 $total = $row["total"];
 $month = $row["month"];
 
 echo "<table><tr><td class=sprt >";
-$paid = mysql_fetch_array(mysql_query("SELECT SUM(amount) AS amount FROM iphs.payments WHERE srno = $id",$con));
+$paid = mysqli_fetch_array(mysqli_query($con,"SELECT SUM(amount) AS amount FROM iphs.payments WHERE srno = $id"));
 
 
 
@@ -68,9 +80,9 @@ echo "</td><td>";
 echo "<h3>Payment History</h3>";
 echo "<table border=1><tr><td>Date</td><td>Amount</td></tr>";
 
-$paymentdata = mysql_query("SELECT * FROM iphs.payments WHERE srno = $id",$con);
+$paymentdata = mysqli_query($con,"SELECT * FROM iphs.payments WHERE srno = $id");
 
-while($payment = mysql_fetch_array($paymentdata)){
+while($payment = mysqli_fetch_array($paymentdata)){
 
 echo "<tr><td>";
 echo date("d-m-y",$payment["date"]);
@@ -85,14 +97,14 @@ echo "</table>";
 echo "</td></tr></table>";
 }
 if($_POST["submit"]=='Receive'){
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 $amount = $_POST["amount"];
 $srno = $_POST["srno"];
 $date = time();
 
-$insert = mysql_query("INSERT INTO iphs.payments (srno, amount, date)VALUES ('$srno', '$amount', '$date')",$con);
-if($insert){echo "Amount Recorded";}else{echo "Amount not recorded ".mysql_error();}
+$insert = mysqli_query($con,"INSERT INTO iphs.payments (srno, amount, date)VALUES ('$srno', '$amount', '$date')");
+if($insert){echo "Amount Recorded";}else{echo "Amount not recorded ".mysqli_error();}
 }
 ?>
 </div>

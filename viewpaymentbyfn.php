@@ -15,22 +15,22 @@ session_start();
 <h2>View Payments by Family Number</h2>
 
 <?php
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 
 if($_POST["submit"]=='View' || $_GET["fn"]){
 
 if($_POST["submit"]=='View'){ $fn = $_POST["fn"];} else {$fn = $_GET["fn"]; $slip = $_GET["slip"]; echo "<a href=payment.php?slip=".$_GET["slip"].">Back to Slip</a>";}
 
-$fndata = mysql_query("SELECT * FROM iphs.slips WHERE faimlynum = $fn",$con);
+$fndata = mysqli_query($con,"SELECT * FROM iphs.slips WHERE faimlynum = $fn");
 
 echo "<table border=1px ><th>Slip Sr. No.</th><th>Fee Month</th><th>Amount</th><th>Paid</th><th>Balance</th>";
 
-while($row = mysql_fetch_array($fndata)){
+while($row = mysqli_fetch_array($fndata)){
 
 $id = $row["id"];
 
-$paid = mysql_fetch_array(mysql_query("SELECT SUM(amount) AS amount FROM iphs.payments WHERE srno = $id",$con));
+$paid = mysqli_fetch_array(mysqli_query($con,"SELECT SUM(amount) AS amount FROM iphs.payments WHERE srno = $id",$con);
 
 if($row["total"] - $paid["amount"]>0){echo "<tr class=unpaid >";} else {echo "<tr>";}
 
@@ -72,9 +72,9 @@ echo "Enter Family Number: ";
 echo "</td><td>";
 echo "	<select name=fn>";
 
-$dt = mysql_query("SELECT DISTINCT faimlynum FROM iphs.slips ",$con);
+$dt = mysqli_query($con,"SELECT DISTINCT faimlynum FROM iphs.slips ");
 
-while($fai = mysql_fetch_array($dt)){
+while($fai = mysqli_fetch_array($dt)){
 
 echo "<option value=".$fai["faimlynum"]." >".$fai["faimlynum"]."</option>";
 

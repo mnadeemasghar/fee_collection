@@ -6,24 +6,24 @@ session_start();
 <html>
 <head>
 <title>Islamic Public School Fee System</title>
-<?php if($_GET["submit"]) { echo "<link href=head.css rel=stylesheet type= text/css >"; } else { echo "<link href=style.css rel=stylesheet type= text/css >";}?>
+<?php if(isset($_GET["submit"])) { echo "<link href=head.css rel=stylesheet type= text/css >"; } else { echo "<link href=style.css rel=stylesheet type= text/css >";}?>
 </head>
 <body>
 <div class=wraper>
 <?php
-if($_GET["submit"]){
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+if(isset($_GET["submit"])){
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 
 
 $month = $_GET["month"]. "-" . $_GET["year"];
 
-$slips = mysql_query("SELECT * FROM iphs.slips WHERE month LIKE '$month' ",$con);
-while($row = mysql_fetch_array($slips))
+$slips = mysqli_query($con,"SELECT * FROM iphs.slips WHERE month LIKE '$month' ");
+while($row = mysqli_fetch_array($slips))
 {
 $id = $row["id"];
-$class = $row["class"];
-$regnum = $row["regnum"];
+//$class = $row["class"];
+//$regnum = $row["regnum"];
 $faimlynum = $row["faimlynum"];
 $admission = $row["admission"];
 $tuition = $row["tuition"];
@@ -45,18 +45,18 @@ echo "<table class=prntslip>";
 echo "<tr><td>Sr. No: </td><td>".$id."</td>";
 echo "<td>Fee Month: </td><td>".$month."</td></tr>";
 
-$name = mysql_query("SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ",$con);
+$name = mysqli_query($con,"SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ");
 
 echo "<tr><td>Name: </td><td>";
 
-while($std = mysql_fetch_array($name)){ echo $std["name"].", ";}
+while($std = mysqli_fetch_array($name)){ echo $std["name"].", ";}
 
 echo "</td>";
 echo "<td>Class: </td><td>";
 
-$name = mysql_query("SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ",$con);
+$name = mysqli_query($con,"SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ");
 
-while($std = mysql_fetch_array($name)){ echo $std["class"].", ";}
+while($std = mysqli_fetch_array($name)){ echo $std["class"].", ";}
 
 echo "</td></tr>";
 echo "</table>";
@@ -82,18 +82,18 @@ echo "<table class=prntslip>";
 echo "<tr><td>Sr. No: </td><td>".$id."</td>";
 echo "<td>Fee Month: </td><td>".$month."</td></tr>";
 
-$name = mysql_query("SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ",$con);
+$name = mysqli_query($con,"SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ");
 
 echo "<tr><td>Name: </td><td>";
 
-while($std = mysql_fetch_array($name)){ echo $std["name"].", ";}
+while($std = mysqli_fetch_array($name)){ echo $std["name"].", ";}
 
 echo "</td>";
 echo "<td>Class: </td><td>";
 
-$name = mysql_query("SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ",$con);
+$name = mysqli_query($con,"SELECT * FROM iphs.students WHERE faimlynum = '$faimlynum' ");
 
-while($std = mysql_fetch_array($name)){ echo $std["class"].", ";}
+while($std = mysqli_fetch_array($name)){ echo $std["class"].", ";}
 
 echo "</td></tr>";
 echo "</table>";
@@ -114,8 +114,8 @@ echo "</div>";
 }
 
 /*
-$insert = mysql_query("INSERT INTO iphs.students (name, class, regnum, faimlynum, admission, tuition, sports, building, medical, recreation, examination, buscharge)VALUES('$name', '$class', '$regnum', '$faimlynum', '$admission', '$tuition', '$sports', '$building', '$medical', '$recreation', '$examination', '$buscharge')",$con);
-if($insert){echo "Data Entered";}else{echo "Data not Entered<br>".mysql_error();}*/
+$insert = mysqli_query($con,"INSERT INTO iphs.students (name, class, regnum, faimlynum, admission, tuition, sports, building, medical, recreation, examination, buscharge)VALUES('$name', '$class', '$regnum', '$faimlynum', '$admission', '$tuition', '$sports', '$building', '$medical', '$recreation', '$examination', '$buscharge')");
+if($insert){echo "Data Entered";}else{echo "Data not Entered<br>".mysqli_error();}*/
 }
 else{
 echo "<a href=index.php>Home</a> - View/Print Slips

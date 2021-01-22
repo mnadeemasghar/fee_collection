@@ -18,8 +18,8 @@ session_start();
 
 if ($_POST["submit"]=='Update'){
 
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 
 
 $id = $_POST["id"];
@@ -37,9 +37,9 @@ $examination = $_POST["examination"];
 $buscharge = $_POST["buscharge"];
 $active = $_POST["active"];
 
-$update = mysql_query("UPDATE iphs.students SET name = '$name', class = '$class', regnum = '$regnum',  faimlynum = '$faimlynum', admission = '$admission', tuition = '$tuition', sports = '$sports',  building = '$building',  medical = '$medical',  recreation = '$recreation',  examination = '$examination', buscharge = '$buscharge', active = '$active' WHERE id = $id ",$con);
+$update = mysqli_query($con,"UPDATE iphs.students SET name = '$name', class = '$class', regnum = '$regnum',  faimlynum = '$faimlynum', admission = '$admission', tuition = '$tuition', sports = '$sports',  building = '$building',  medical = '$medical',  recreation = '$recreation',  examination = '$examination', buscharge = '$buscharge', active = '$active' WHERE id = $id ");
 
-if($update){ echo "Data Updated <a href=viewstd.php>View All Students</a>";}else {echo "Data not Updated <br> ". mysql_error();}
+if($update){ echo "Data Updated <a href=viewstd.php>View All Students</a>";}else {echo "Data not Updated <br> ". mysqli_error();}
 
 }
 

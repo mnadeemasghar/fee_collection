@@ -15,14 +15,14 @@ session_start();
 <h2>Update Family Bus Charges</h2>
 
 <?php
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 
-if($_POST["update"]=='update'){
+if(isset($_POST["update"])){
 $data = $_POST["data"];
 $fn = $_POST["fn"];
 
-$update = mysql_query("UPDATE iphs.students SET buscharge = '$data' WHERE students.faimlynum = '$fn'",$con);
+$update = mysqli_query($con,"UPDATE iphs.students SET buscharge = '$data' WHERE students.faimlynum = '$fn'");
 if($update){
 
 echo "Data Updated";
@@ -32,7 +32,7 @@ echo "Data Updated";
 else
 {
 
-echo "Data not updated<br>". mysql_error();
+echo "Data not updated<br>". mysqli_error();
 
 }
 

@@ -15,15 +15,15 @@ session_start();
 <h2>View Student Data</h2>
 
 <?php
-$con = mysql_connect("localhost","root","root","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 
-if($_POST["submit"]=='Edit'){
+if(isset($_POST["submit"])){
 $id = $_POST["id"];
 
-$stddata = mysql_query("SELECT * FROM iphs.students WHERE id = $id",$con);
+$stddata = mysqli_query($con, "SELECT * FROM iphs.students WHERE id = $id");
 
-while($row = mysql_fetch_array($stddata)){
+while($row = mysqli_fetch_array($stddata)){
 
 $name = $row["name"];
 $class = $row["class"];
@@ -96,15 +96,16 @@ echo "<tr><td>Active</td><td><select name=active >
 echo "<tr><td></td><td><input type=submit name=submit value=Update></td></tr>";
 echo "</table></form>";
 
-}}
+}
+}
 
 else{
 
 
 echo "<table border=1><th>Reg. Num</th><th>Name</th><th>Class</th><th>Family No</th><th>Admission</th><th>Tuition</th><th>Generator</th><th>Building</th><th>Medical</th><th>Recreation</th><th>Examination</th><th>Buscharge</th><th>Active</th><th>Edit</th>";
 
-$stddata = mysql_query("SELECT * FROM iphs.students",$con);
-while($row = mysql_fetch_array($stddata)){
+$stddata = mysqli_query($con, "SELECT * FROM iphs.students");
+while($row = mysqli_fetch_array($stddata)){
 
 $id = $row["id"];
 

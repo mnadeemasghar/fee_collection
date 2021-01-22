@@ -99,8 +99,8 @@ session_start();
 </form>
 <?php
 if(isset($_POST["submit"])){
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysql_error();}
+$con = mysqli_connect("localhost","root","root","iphs");
+if(!$con){echo "Unable to Connect". mysqli_error();}
 /*
 $_SESSION["email"] = 
 $_SESSION["password"] = */
@@ -119,11 +119,11 @@ $examination = $_POST["examination"];
 $buscharge = $_POST["buscharge"];
 $active = $_POST["active"];
 
-$insert = mysqli_query(
+$insert = mysqli_query($con, 
 	"INSERT INTO
 	iphs.students (name, class, regnum, faimlynum, admission, tuition, sports, building, medical, recreation, examination, buscharge, active)
 	VALUES(
-	'$name', '$class', '$regnum', '$faimlynum', '$admission', '$tuition', '$sports', '$building', '$medical', '$recreation', '$examination', '$buscharge', '$active')",$con);
+	'$name', '$class', '$regnum', '$faimlynum', '$admission', '$tuition', '$sports', '$building', '$medical', '$recreation', '$examination', '$buscharge', '$active')");
 if($insert){echo "Data Entered";}
 else{echo "Data not Entered<br>".mysqli_error();}
 }
