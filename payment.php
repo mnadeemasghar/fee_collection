@@ -29,11 +29,8 @@ session_start();
 </form>
 <?php
 
-if (isset($_POST["submit"])) {
-	$submit = $_POST["submit"];
-}
 
-if($submit='View' || isset($_GET["slip"])){
+if(isset($_POST["submit"]) || isset($_GET["slip"])){
 $con = mysqli_connect("localhost","root","root","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
 
@@ -96,11 +93,20 @@ echo "</table>";
 
 echo "</td></tr></table>";
 }
-if($_POST["submit"]=='Receive'){
+if(isset($_POST["submit"])){
 $con = mysqli_connect("localhost","root","root","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
-$amount = $_POST["amount"];
-$srno = $_POST["srno"];
+
+if (isset($_POST["amount"])) {
+	$amount = $_POST["amount"];
+}else{$amount = 0;}
+
+
+if (isset($_POST["srno"])) {
+	$srno = $_POST["srno"];
+}else{$srno=0;}
+
+
 $date = time();
 
 $insert = mysqli_query($con,"INSERT INTO iphs.payments (srno, amount, date)VALUES ('$srno', '$amount', '$date')");

@@ -18,9 +18,9 @@ session_start();
 $con = mysqli_connect("localhost","root","root","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
 
-if($_POST["submit"]=='View' || $_GET["fn"]){
+if(isset($_POST["submit"]) || isset($_GET["fn"])){
 
-if($_POST["submit"]=='View'){ $fn = $_POST["fn"];} else {$fn = $_GET["fn"]; $slip = $_GET["slip"]; echo "<a href=payment.php?slip=".$_GET["slip"].">Back to Slip</a>";}
+if(isset($_POST["submit"])){ $fn = $_POST["fn"];} else {$fn = $_GET["fn"]; $slip = $_GET["slip"]; echo "<a href=payment.php?slip=".$_GET["slip"].">Back to Slip</a>";}
 
 $fndata = mysqli_query($con,"SELECT * FROM iphs.slips WHERE faimlynum = $fn");
 
@@ -30,7 +30,7 @@ while($row = mysqli_fetch_array($fndata)){
 
 $id = $row["id"];
 
-$paid = mysqli_fetch_array(mysqli_query($con,"SELECT SUM(amount) AS amount FROM iphs.payments WHERE srno = $id",$con);
+$paid = mysqli_fetch_array(mysqli_query($con,"SELECT SUM(amount) AS amount FROM iphs.payments WHERE srno = $id"));
 
 if($row["total"] - $paid["amount"]>0){echo "<tr class=unpaid >";} else {echo "<tr>";}
 
