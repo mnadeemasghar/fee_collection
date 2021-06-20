@@ -5,8 +5,7 @@ session_start();
 
 <html>
 <head>
-<title>Islamic Public School Fee System</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<?php require "header.php"; ?>
 </head>
 <body>
 <div class=wraper>

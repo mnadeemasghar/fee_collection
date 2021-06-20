@@ -5,8 +5,7 @@ session_start();
 
 <html>
 <head>
-<title>Islamic Public School Fee System</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<?php require "header.php"; ?>
 </head>
 <body>
 <div class=wraper>
@@ -22,23 +21,24 @@ session_start();
 </tr>
 
 <tr>
-	<td>Class</td><td>
+	<td>Class</td>
 	
-	<select name=class >
-  <option value="PG">Play Group</option>
-  <option value="Nursery">Nursery</option>
-  <option value="Prep">Prep</option>
-  <option value="1st">1st</option>
-  <option value="2nd">2nd</option>
-  <option value="3rd">3rd</option>
-  <option value="4th">4th</option>
-  <option value="5th">5th</option>
-  <option value="6th">6th</option>
-  <option value="7th">7th</option>
-  <option value="8th">8th</option>
-  <option value="9th">9th</option>
-  <option value="10th">10th</option>
-</select> 
+	<td>
+		<select name=class >
+		  <option value="PG">Play Group</option>
+		  <option value="Nursery">Nursery</option>
+		  <option value="Prep">Prep</option>
+		  <option value="1st">1st</option>
+		  <option value="2nd">2nd</option>
+		  <option value="3rd">3rd</option>
+		  <option value="4th">4th</option>
+		  <option value="5th">5th</option>
+		  <option value="6th">6th</option>
+		  <option value="7th">7th</option>
+		  <option value="8th">8th</option>
+		  <option value="9th">9th</option>
+		  <option value="10th">10th</option>
+		</select> 
 
 	</td>
 </tr>
@@ -99,7 +99,7 @@ session_start();
 </form>
 <?php
 if(isset($_POST["submit"])){
-$con = mysqli_connect("localhost","root","root","iphs");
+$con = mysqli_connect("localhost","root","","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
 /*
 $_SESSION["email"] = 

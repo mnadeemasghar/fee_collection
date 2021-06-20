@@ -5,9 +5,7 @@ session_start();
 
 <html>
 <head>
-<title>Islamic Public School Fee System</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-</head>
+<?php require "header.php"; ?></head>
 <body>
 <div class=wraper>
 <a href=index.php>Home</a> - <a href=bulkupdatestd.php>Update Bulk Students</a> - Update by Class

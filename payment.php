@@ -5,8 +5,7 @@ session_start();
 
 <html>
 <head>
-<title>Islamic Public School Fee System</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<?php require "header.php"; ?>
 </head>
 <body>
 <div class=wraper>
@@ -31,7 +30,7 @@ session_start();
 
 
 if(isset($_POST["submit"]) || isset($_GET["slip"])){
-$con = mysqli_connect("localhost","root","root","iphs");
+$con = mysqli_connect("localhost","root","","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
 
 if($submit='View'){ 
@@ -94,7 +93,7 @@ echo "</table>";
 echo "</td></tr></table>";
 }
 if(isset($_POST["submit"])){
-$con = mysqli_connect("localhost","root","root","iphs");
+$con = mysqli_connect("localhost","root","","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
 
 if (isset($_POST["amount"])) {

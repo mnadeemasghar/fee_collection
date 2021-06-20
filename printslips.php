@@ -5,14 +5,14 @@ session_start();
 
 <html>
 <head>
-<title>Islamic Public School Fee System</title>
-<?php if(isset($_GET["submit"])) { echo "<link href=head.css rel=stylesheet type= text/css >"; } else { echo "<link href=style.css rel=stylesheet type= text/css >";}?>
+<?php require "header.php"; ?>
+<?php if(isset($_GET["submit"])) { echo "<link href=head.css rel=stylesheet type= text/css >"; } ?>
 </head>
 <body>
 <div class=wraper>
 <?php
 if(isset($_GET["submit"])){
-$con = mysqli_connect("localhost","root","root","iphs");
+$con = mysqli_connect("localhost","root","","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
 
 

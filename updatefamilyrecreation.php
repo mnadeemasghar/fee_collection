@@ -5,8 +5,7 @@ session_start();
 
 <html>
 <head>
-<title>Islamic Public School Fee System</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<?php require "header.php"; ?>
 </head>
 <body>
 <div class=wraper>
@@ -15,7 +14,7 @@ session_start();
 <h2>Update Family Recreation Fund</h2>
 
 <?php
-$con = mysqli_connect("localhost","root","root","iphs");
+$con = mysqli_connect("localhost","root","","iphs");
 if(!$con){echo "Unable to Connect". mysqli_error();}
 
 if(isset($_POST["update"])){
