@@ -14,8 +14,7 @@ session_start();
 <h2>View Payments by Family Number</h2>
 
 <?php
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysqli_error();}
+
 
 if(isset($_POST["submit"]) || isset($_GET["fn"])){
 

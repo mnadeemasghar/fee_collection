@@ -32,8 +32,7 @@ session_start();
 </form>
 <?php
 if(isset($_POST["submit"])){
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysqli_error();}
+
 /*
 $_SESSION["email"] = 
 $_SESSION["password"] = */

@@ -12,8 +12,7 @@ session_start();
 <div class=wraper>
 <?php
 if(isset($_GET["submit"])){
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysqli_error();}
+
 
 
 $month = $_GET["month"]. "-" . $_GET["year"];

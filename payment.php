@@ -30,8 +30,7 @@ session_start();
 
 
 if(isset($_POST["submit"]) || isset($_GET["slip"])){
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysqli_error();}
+
 
 if($submit='View'){ 
 	if (isset($_POST["id"])) {
@@ -93,8 +92,7 @@ echo "</table>";
 echo "</td></tr></table>";
 }
 if(isset($_POST["submit"])){
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysqli_error();}
+
 
 if (isset($_POST["amount"])) {
 	$amount = $_POST["amount"];

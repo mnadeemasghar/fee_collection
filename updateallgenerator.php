@@ -14,8 +14,7 @@ session_start();
 <h2>Update All Students Generator Fee</h2>
 
 <?php
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysqli_error();}
+
 
 if(isset($_POST["update"])){
 $sports = $_POST["sports"];
