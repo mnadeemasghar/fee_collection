@@ -33,7 +33,7 @@ if(isset($_POST["submit"])){
 
 $month = $_POST["month"]. "-" . $_POST["year"];
 $x = 0;
-$result = mysqli_query($con,"SELECT * FROM iphs.students WHERE active = 'Y' GROUP BY faimlynum");
+$result = mysqli_query($con,"SELECT * FROM students WHERE active = 'Y' GROUP BY faimlynum");
 
 while($row = mysqli_fetch_array($result)){
 $faimlynum = $row["faimlynum"];
@@ -49,7 +49,7 @@ $sum = mysqli_fetch_array(
 				SUM( recreation ) AS recreation,
 				SUM( examination ) AS examination,
 				SUM( buscharge ) AS buscharge 
-				FROM iphs.students 
+				FROM students 
 				WHERE faimlynum = $faimlynum"));
 $total = $sum["admission"] + $sum["tuition"] + $sum["sports"] + $sum["building"] + $sum["medical"] + $sum["recreation"] + $sum["examination"] + $sum["buscharge"];
 
@@ -58,7 +58,7 @@ $stnum = mysqli_fetch_array(
 				$con,
 				"SELECT 
 				count( faimlynum ) AS faimlynum 
-				FROM iphs.students 
+				FROM students 
 				WHERE faimlynum = $faimlynum"));
 
 $stnum = $stnum["faimlynum"];
@@ -76,7 +76,7 @@ $total = $total;
 
 $insert = mysqli_query(
 	$con,
-	"INSERT INTO iphs.slips 
+	"INSERT INTO slips 
 		(stnum, faimlynum, month, admission, tuition, sports, building, medical, recreation, examination, buscharge, total)
 	VALUES ('$stnum', '$faimlynum', '$month', '$admission', '$tuition', '$sports', '$building', '$medical', '$recreation', '$examination', '$buscharge', '$total')");
 if($insert){$x=$x+1;}else{echo "Data not entered ". mysqli_error();}

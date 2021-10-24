@@ -119,7 +119,7 @@ session_start();
 
 			$insert = mysqli_query($con, 
 				"INSERT INTO
-					iphs.students
+					students
 					(
 						name,
 						class,

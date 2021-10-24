@@ -40,7 +40,8 @@ $_SESSION["password"] = */
 $fname = $_POST["fname"];
 $faimlynum = $_POST["faimlynum"];
 
-$insert = mysqli_query($con,"INSERT INTO iphs.faimly (fname, faimlynum)VALUES('$fname','$faimlynum')");
+
+$insert = mysqli_query($con,"INSERT INTO faimly (fname, faimlynum)VALUES('$fname','$faimlynum')");
 if($insert){echo "Data Entered";}else{echo "Data not Entered<br>".mysqli_error();}
 }
 ?>

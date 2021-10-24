@@ -20,7 +20,7 @@ if(isset($_POST["submit"]) || isset($_GET["fn"])){
 
 if(isset($_POST["submit"])){ $fn = $_POST["fn"];} else {$fn = $_GET["fn"]; $slip = $_GET["slip"]; echo "<a href=payment.php?slip=".$_GET["slip"].">Back to Slip</a>";}
 
-$fndata = mysqli_query($con,"SELECT * FROM iphs.slips WHERE faimlynum = $fn");
+$fndata = mysqli_query($con,"SELECT * FROM slips WHERE faimlynum = $fn");
 
 echo "<table border=1px ><th>Slip Sr. No.</th><th>Fee Month</th><th>Amount</th><th>Paid</th><th>Balance</th>";
 
@@ -28,7 +28,7 @@ while($row = mysqli_fetch_array($fndata)){
 
 $id = $row["id"];
 
-$paid = mysqli_fetch_array(mysqli_query($con,"SELECT SUM(amount) AS amount FROM iphs.payments WHERE srno = $id"));
+$paid = mysqli_fetch_array(mysqli_query($con,"SELECT SUM(amount) AS amount FROM payments WHERE srno = $id"));
 
 if($row["total"] - $paid["amount"]>0){echo "<tr class=unpaid >";} else {echo "<tr>";}
 
@@ -70,7 +70,7 @@ echo "Enter Family Number: ";
 echo "</td><td>";
 echo "	<select name=fn>";
 
-$dt = mysqli_query($con,"SELECT DISTINCT faimlynum FROM iphs.slips ");
+$dt = mysqli_query($con,"SELECT DISTINCT faimlynum FROM slips ");
 
 while($fai = mysqli_fetch_array($dt)){
 

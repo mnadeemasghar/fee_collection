@@ -10,9 +10,9 @@ session_start();
 <body>
     <div class='text-white bg-primary'>
         <?php
-        $students = mysqli_num_rows(mysqli_query($con,"SELECT * FROM iphs.students"));
-        $families = mysqli_num_rows(mysqli_query($con,"SELECT * FROM iphs.faimly"));
-        $payments = mysqli_fetch_array(mysqli_query($con,"SELECT sum(amount) as amount FROM iphs.payments"));
+        $students = mysqli_num_rows(mysqli_query($con,"SELECT * FROM students"));
+        $families = mysqli_num_rows(mysqli_query($con,"SELECT * FROM faimly"));
+        $payments = mysqli_fetch_array(mysqli_query($con,"SELECT sum(amount) as amount FROM payments"));
         ?>
     </div>
     <div class=wraper>
@@ -24,11 +24,23 @@ session_start();
         <li><a href="viewstd.php">View/Edit Student</a></li>
         <li><a href="bulkupdatestd.php">Update Bulk Students</a></li>
         </ul>
+        
+        <h3>Employees</h3>
+        <ul>
+        <li><a href="add_employee.php">Add New Employee</a></li>
+        <li><a href="view_all_employees.php">All Employees</a></li>
+        <li><a href="#">Edit Employee</a></li>
+        </ul>
 
         <h3>Slips</h3>
         <ul>
         <li><a href="createslips.php">Create Slips</a></li>
         <li><a href="printslips.php">View/Print Slips</a></li>
+        </ul>
+
+        <h3>Attendance</h3>
+        <ul>
+        <li><a href="attendance.php">Attendance</a></li>
         </ul>
 
         <h3>Payment</h3>

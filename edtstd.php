@@ -35,7 +35,7 @@ $examination = $_POST["examination"];
 $buscharge = $_POST["buscharge"];
 $active = $_POST["active"];
 
-$update = mysqli_query($con,"UPDATE iphs.students SET name = '$name', class = '$class', regnum = '$regnum',  faimlynum = '$faimlynum', admission = '$admission', tuition = '$tuition', sports = '$sports',  building = '$building',  medical = '$medical',  recreation = '$recreation',  examination = '$examination', buscharge = '$buscharge', active = '$active' WHERE id = $id ");
+$update = mysqli_query($con,"UPDATE students SET name = '$name', class = '$class', regnum = '$regnum',  faimlynum = '$faimlynum', admission = '$admission', tuition = '$tuition', sports = '$sports',  building = '$building',  medical = '$medical',  recreation = '$recreation',  examination = '$examination', buscharge = '$buscharge', active = '$active' WHERE id = $id ");
 
 if($update){ echo "Data Updated <a href=viewstd.php>View All Students</a>";}else {echo "Data not Updated <br> ". mysqli_error();}
 

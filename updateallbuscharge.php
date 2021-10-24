@@ -19,7 +19,7 @@ session_start();
 if(isset($_POST["update"])){
 $data = $_POST["data"];
 
-$update = mysqli_query($con,"UPDATE iphs.students SET buscharge = '$data' WHERE students.active = 'Y'");
+$update = mysqli_query($con,"UPDATE students SET buscharge = '$data' WHERE students.active = 'Y'");
 if($update){
 
 echo "Data Updated";

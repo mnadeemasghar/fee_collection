@@ -98,7 +98,7 @@ session_start();
               <th>Active</th>
               <th>Edit</th>";
 
-            $stddata = mysqli_query($con, "SELECT * FROM iphs.students");
+            $stddata = mysqli_query($con, "SELECT * FROM students");
             while($row = mysqli_fetch_array($stddata)){
         
               echo "<tr>";

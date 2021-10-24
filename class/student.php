@@ -3,7 +3,7 @@ require "connect.php";
 class student extends conn {
 
 	public function getbyid($id){
-		$stddata = mysqli_query($this->con, "SELECT * FROM iphs.students WHERE id = $id");
+		$stddata = mysqli_query($this->con, "SELECT * FROM students WHERE id = $id");
 		while($row = mysqli_fetch_array($stddata)){
 			return $this->data = array(
 				'name' => $row["name"],

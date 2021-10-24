@@ -5,6 +5,5 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <?php
-$con = mysqli_connect("localhost","root","","iphs");
-if(!$con){echo "Unable to Connect". mysqli_error();}
+include('connection.php');
 ?>

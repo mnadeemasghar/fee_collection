@@ -20,7 +20,7 @@ if(isset($_POST["update"])){
 $data = $_POST["data"];
 $fn = $_POST["fn"];
 
-$update = mysqli_query($con,"UPDATE iphs.students SET medical = '$data' WHERE students.faimlynum = '$fn'");
+$update = mysqli_query($con,"UPDATE students SET medical = '$data' WHERE students.faimlynum = '$fn'");
 if($update){
 
 echo "Data Updated";
