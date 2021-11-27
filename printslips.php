@@ -10,6 +10,8 @@ session_start();
 </head>
 <body <?php if(isset($_GET["submit"])){ echo "onload='print()'";} ?> >
 <div class=wraper>
+<?php require "nav_bar.php"; ?>
+
 <?php
 if(isset($_GET["submit"])){
 	$month = $_GET["month"]. "-" . $_GET["year"];

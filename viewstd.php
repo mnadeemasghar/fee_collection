@@ -10,6 +10,8 @@ session_start();
   </head>
 <body>
   <div class=wraper>
+  <?php require "nav_bar.php"; ?>
+
   <a href=index.php>Home</a> - View Student Data
 
   <h2>View Student Data</h2>

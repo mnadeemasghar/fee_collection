@@ -9,6 +9,8 @@ session_start();
 </head>
 <body>
 <div class=wraper>
+<?php require "nav_bar.php"; ?>
+
 <a href=index.php>Home</a> - Edit Student Data
 
 <h2>Edit Student Data</h2>

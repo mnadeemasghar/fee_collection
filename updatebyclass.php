@@ -8,6 +8,8 @@ session_start();
 <?php require "header.php"; ?></head>
 <body>
 <div class=wraper>
+<?php require "nav_bar.php"; ?>
+
 <a href=index.php>Home</a> - <a href=bulkupdatestd.php>Update Bulk Students</a> - Update by Class
 
 <h2>Update by Class</h2>

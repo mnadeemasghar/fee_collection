@@ -5,6 +5,7 @@
 </head>
 <body>
     <div class=wraper>
+        <?php require "nav_bar.php"; ?>
         <a href=index.php>Home</a> - Add Employee
         <h2>Add New Employee</h2>
 

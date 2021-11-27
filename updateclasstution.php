@@ -9,6 +9,8 @@ session_start();
 </head>
 <body>
 <div class=wraper>
+<?php require "nav_bar.php"; ?>
+
 <a href=index.php>Home</a> - <a href=bulkupdatestd.php>Update Bulk Students</a> - <a href=updatebyclass.php>Update by Class</a> - Update Class Tuition Fee
 
 <h2>Update Class Tuition Fee</h2>

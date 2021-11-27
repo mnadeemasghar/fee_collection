@@ -9,6 +9,7 @@ session_start();
 </head>
 <body>
 <div id="data" class="wraper">
+    <?php require "nav_bar.php"; ?>
     <a href=index.php>Home</a> - Attendance
     <h2>Attendance</h2>
     <Label>ID:</Label>
