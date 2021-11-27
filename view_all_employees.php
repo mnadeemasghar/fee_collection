@@ -10,7 +10,7 @@
         <a href=index.php>Home</a> - View All Employees
         <h2>View All Employees</h2>
 
-        <table>
+        <table class="table table-bordered">
             <thead>
                 <th>Sr.</th>
                 <th>Name</th>

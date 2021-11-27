@@ -84,7 +84,7 @@ session_start();
     else{
 
 
-      echo "<table>
+      echo "<table class='table table-bordered'>
               <th>Reg. Num</th>
               <th>Name</th>
               <th>Class</th>
